@@ -1,0 +1,13 @@
+apiVersion: v2
+name: dns4acme
+home: https://dns4acme.github.io
+sources:
+  - https://github.com/dns4acme
+icon: https://dns4acme.github.io/logo.svg
+description: |
+  DNS4ACME is a lightweight DNS server that allows you to create DNS-verified certificates with ACME providers such a
+  Let's Encrypt. DNS4ACME can help if you have an old-fashioned DNS server, and you cannot automatically create the DNS
+  records needed for DNS verification.
+type: application
+version: 0.0.0-SNAPSHOT
+appVersion: "latest"
