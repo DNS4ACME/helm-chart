@@ -22,7 +22,7 @@ jobs:
       - name: Run test
         run: |
           set -euo pipefail
-          ./helm/test.sh
+          ./test.sh
   release:
     name: Release
     runs-on: ubuntu-latest
