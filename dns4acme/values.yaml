@@ -5,5 +5,4 @@ nameservers:
   - ns1.dns4acme.github.io
 backend:
   type: kubernetes
-  host: 127.0.0.1:6443
-listen_port: 53
+listen_port: 5353

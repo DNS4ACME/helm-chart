@@ -93,10 +93,6 @@
                         "type": {
                             "type": "string",
                             "const": "kubernetes"
-                        },
-                        "host": {
-                            "type": "string",
-                            "default": "kubernetes.default.svc"
                         }
                     }
                 }
