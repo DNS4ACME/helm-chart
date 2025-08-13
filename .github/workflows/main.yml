@@ -65,7 +65,7 @@ jobs:
           VERSION=$(echo -n '${{ github.ref_name }}' | sed -e 's/v//')
           REPO=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
           echo "Executing helm push"
-          DIGEST=$(helm push "dns4acme-${VERSION}.tgz" "oci://ghcr.io/${REPO}" |grep Digest | cut -d ' ' -f 2)
+          DIGEST=$(helm push "dns4acme-${VERSION}.tgz" "oci://ghcr.io/${REPO}" 2>&1 | grep Digest | cut -d ' ' -f 2)
           echo "Singing release"
           cosign sign -d "ghcr.io/${REPO}/dns4acme@${DIGEST}"
       - name: Upload artifacts
