@@ -47,6 +47,12 @@ jobs:
         env:
           DOCKER_USER: ${{ github.repository_owner }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Cosign login
+        run: |
+          echo "${GITHUB_TOKEN}" | cosign login ghcr.io --username "${DOCKER_USER}" --password-stdin
+        env:
+          DOCKER_USER: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Replace version
         if: startsWith(github.ref, 'refs/tags/')
         run: |
