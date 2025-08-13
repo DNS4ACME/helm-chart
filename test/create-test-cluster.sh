@@ -92,3 +92,9 @@ group "⚙️ Configure KinD cluster for registry" $?
     --timeout=300s
 ) > /tmp/$$ 2>&1
 group "🛂 Deploy ingress controller" $?
+
+(
+  set -euo pipefail
+  kubectl create ns dns4acme
+) > /tmp/$$ 2>&1
+ group "📦 Create namespace" $?
