@@ -97,4 +97,4 @@ group "🛂 Deploy ingress controller" $?
   set -euo pipefail
   kubectl create ns dns4acme
 ) > /tmp/$$ 2>&1
- group "📦 Create namespace" $?
+group "📦 Create namespace" $?
