@@ -38,16 +38,19 @@ jobs:
         with:
           fetch-depth: 0
       - name: Install Cosign
+        if: startsWith(github.ref, 'refs/tags/')
         uses: sigstore/cosign-installer@d58896d6a1865668819e1d91763c7751a165e159 #v3.9.2
         with:
           cosign-release: 'v2.5.3'
       - name: Helm login
+        if: startsWith(github.ref, 'refs/tags/')
         run: |
           echo "${GITHUB_TOKEN}" | helm registry login ghcr.io --username "${DOCKER_USER}" --password-stdin
         env:
           DOCKER_USER: ${{ github.repository_owner }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Cosign login
+        if: startsWith(github.ref, 'refs/tags/')
         run: |
           echo "${GITHUB_TOKEN}" | cosign login ghcr.io --username "${DOCKER_USER}" --password-stdin
         env:
