@@ -16,6 +16,47 @@
                 "daemonset"
             ]
         },
+        "resources": {
+            "title": "Resource limits and requests",
+            "description": "Set Kubernetes resource limits and requests for the DNS4ACME container.",
+            "type": "object",
+            "properties": {
+                "limits": {
+                    "title": "Limits",
+                    "description": "Hard limits on resource consumption",
+                    "type": "object",
+                    "properties": {
+                        "memory": {
+                            "title": "Memory",
+                            "type": "string",
+                            "pattern": "^[0-9]+(|e[0-9]+)(|\\.[0-9]+)(|E|P|T|G|M|k|Ei|Pi|Gi|Mi|Ki)$"
+                        },
+                        "cpu": {
+                            "title": "CPU",
+                            "type": "string",
+                            "pattern": "^[0-9]+(|\\.[0-9]{1,3}|m)$"
+                        }
+                    }
+                },
+                "requests": {
+                    "title": "Requests",
+                    "description": "Minimum resource requirements",
+                    "type": "object",
+                    "properties": {
+                        "memory": {
+                            "title": "Memory",
+                            "type": "string",
+                            "pattern": "^[0-9]+(|e[0-9]+)(|\\.[0-9]+)(|E|P|T|G|M|k|Ei|Pi|Gi|Mi|Ki)$"
+                        },
+                        "cpu": {
+                            "title": "CPU",
+                            "type": "string",
+                            "pattern": "^[0-9]+(|\\.[0-9]{1,3}|m)$"
+                        }
+                    }
+                }
+            }
+        },
         "ingress": {
             "title": "Ingress",
             "description": "How to get external traffic to DNS4ACME.",

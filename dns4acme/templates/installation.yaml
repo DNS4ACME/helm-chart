@@ -23,6 +23,39 @@ spec:
       hostNetwork: {{ if eq .Values.ingress.method "hostnet" }}true{{else}}false{{end}}
       containers:
         - name: {{ .Release.Name | quote }}
+          {{- with .Values.resources }}
+          resources:
+            {{- with .requests }}
+            requests:
+              {{- with .cpu }}
+              cpu: {{ . | quote}}
+              {{- else }}
+              cpu: ""
+              {{- end }}
+              {{- with .memory }}
+              memory: {{ . | quote}}
+              {{- else }}
+              memory: ""
+              {{- end }}
+            {{- else }}
+            requests: {}
+            {{- end}}
+            {{- with .limits }}
+            limits:
+              {{- with .cpu }}
+              cpu: {{ . | quote}}
+              {{- else }}
+              cpu: ""
+              {{- end }}
+              {{- with .memory }}
+              memory: {{ . | quote}}
+              {{- else }}
+              memory: ""
+              {{- end }}
+            {{- else }}
+            limits: {}
+            {{- end}}
+          {{- end }}
           image: {{ with .Values.image }}{{ . | quote }}{{ else }}ghcr.io/dns4acme/dns4acme:{{ .Chart.AppVersion }}{{ end }}
           {{- with .Values.listen_port }}{{ if lt (int .) 1025 }}
           securityContext:
