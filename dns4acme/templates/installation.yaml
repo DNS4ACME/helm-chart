@@ -29,13 +29,9 @@ spec:
             requests:
               {{- with .cpu }}
               cpu: {{ . | quote}}
-              {{- else }}
-              cpu: ""
               {{- end }}
               {{- with .memory }}
               memory: {{ . | quote}}
-              {{- else }}
-              memory: ""
               {{- end }}
             {{- else }}
             requests: {}
@@ -44,13 +40,9 @@ spec:
             limits:
               {{- with .cpu }}
               cpu: {{ . | quote}}
-              {{- else }}
-              cpu: ""
               {{- end }}
               {{- with .memory }}
               memory: {{ . | quote}}
-              {{- else }}
-              memory: ""
               {{- end }}
             {{- else }}
             limits: {}
