@@ -66,8 +66,8 @@ jobs:
           REPO=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
           echo "Executing helm push"
           DIGEST=$(helm push "dns4acme-${VERSION}.tgz" "oci://ghcr.io/${REPO}" 2>&1 | grep Digest | cut -d ' ' -f 2)
-          echo "Singing release"
-          cosign sign -d "ghcr.io/${REPO}/dns4acme@${DIGEST}"
+          echo "Signing release"
+          cosign sign -y -d "ghcr.io/${REPO}/dns4acme@${DIGEST}"
       - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 #v4.6.2
