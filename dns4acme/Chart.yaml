@@ -10,4 +10,4 @@ description: |
   records needed for DNS verification.
 type: application
 version: 0.0.0-SNAPSHOT
-appVersion: "0.4.1"
+appVersion: "0.4.2"
